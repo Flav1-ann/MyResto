@@ -30,7 +30,7 @@
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="assets/images/fa fa-shopping-cart">
 
     <!-- all CSS -->
     <link href="assets/css/orders.css" rel="stylesheet" type="text/css">
@@ -68,7 +68,7 @@
                     %>
                         <li class="nav-item"><a class="nav-link" href="summary">Récapitulatif des commandes clients</a></li>
                     <% } else { %>
-                        <li class="nav-item"><a class="nav-link" href="panier">Panier</a></li>
+                        <li class="nav-item"><a class="nav-link" href="panier"> <icon src="assets"></icon> Panier</a></li>
                         <li class="nav-item"><a class="nav-link" href="orders">Commandes</a></li>
                         <% }%>
                     <li class="nav-item"><a class="nav-link" href="disconnect">Déconnexion</a></li>

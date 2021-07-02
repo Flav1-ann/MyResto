@@ -13,15 +13,15 @@
 
 <%@include file="header.jsp" %>
 
-<div class="wrapper">
+<div class="wrapper img-body">
     <div class="main-container">
         <%
             Map<Integer, Integer> productIds = (Map<Integer, Integer>) session.getAttribute("order");
             if (productIds != null && !productIds.isEmpty()) {
 
         %>
-        <div class="row d-flex justify-content-center align-items-center h-100 m5-custom bg-white">
-            <div class="col">
+        <div class="row d-flex justify-content-center align-items-center h-100 m5-custom core-panier" >
+            <div class="col" >
 
                 <div class="table-responsive">
                     <table class="table">
@@ -42,8 +42,8 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/images/<%= p.getPicture()%>" class="img-fluid rounded-3"
-                                         style="width: 120px; height: 120px" alt="<%= p.getName()%>">
+                                    <img src="assets/images/<%= p.getPicture()%>" class="img-fluid rounded-3 img-panier"
+                                         alt="<%= p.getName()%>">
                                 </div>
                             </th>
                             <td class="align-middle text-center">
@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
+                <div class="card shadow-2-strong mb-5 mb-lg-0 footer-total" >
                     <div class="card-body p-4">
 
                         <div class="row">
@@ -103,11 +103,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-xl-3">
+                            <div class="col-lg-4 col-xl-3 ">
 
-                                <div class="d-flex justify-content-between text-lg" style="font-weight: 500;">
-                                    <p class="mb-2"><strong>Total</strong></p>
-                                    <p class="mb-2">${totalPrice} €</p>
+                                <div class="d-flex justify-content-between text-lg" >
+                                    <p class="mb-3"><strong>Total</strong></p>
+                                    <p class="mb-3">${totalPrice} €</p>
                                 </div>
 
                                 <hr class="my-4">
@@ -143,10 +143,12 @@
             </div>
         </div>
     </div>
-    <div class="push"></div>
 
+
+
+    <%@include file="footer.jsp" %>
 </div>
 
 
 <!-- End Panier -->
-<%@include file="footer.jsp" %>
+

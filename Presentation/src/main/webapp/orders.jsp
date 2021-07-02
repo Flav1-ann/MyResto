@@ -96,6 +96,7 @@
 
                                         <div class="d-flex align-items-center justify-content-between mt-1">
                                             <h6 class="font-weight-bold my-2">Prix de la commande: <%= price%>€ </h6>
+                                        <h6> role <% user.getRole();%></h6>
                                         </div>
                             <% }
                                  if (user.getRole().equals("ADMIN"))

@@ -45,7 +45,7 @@
                                 %>
                                 <div class="col-lg-4 col-md-6 special-grid " <%=new CategoryService().getById(p.getIdCategory()).getName()%>>
                                     <div class="gallery-single fix img-container">
-                                        <img src="assets/images/<%=p.getPicture()%>" class="img-container-img"
+                                        <img src="assets/images/<%=p.getPicture()%>" class="img-container-img img-product" 
                                              alt="<%= p.getName()%>" height="200">
                                         <div class="why-text">
                                             <h4><%= p.getName()%>
@@ -59,8 +59,8 @@
                                                     <form method="post" action="addToOrder">
                                                         <input type="hidden" id="productId" name="productId"
                                                                value="<%= p.getId() %>">
-                                                        <button class="badge badge-info badge-md p-2" type="submit"
-                                                                formmethod="post">
+                                                        <button class="btn-add" type="submit"
+                                                                formmethod="post" onclick="">
                                                             <span class="fa fa-shopping-cart"></span> Ajouter
                                                         </button>
 
@@ -100,7 +100,7 @@
                                                     <form method="post" action="addToOrder">
                                                         <input type="hidden" id="productId" name="productId"
                                                                value="<%= p.getId() %>">
-                                                        <button class="badge badge-info badge-md p-2" type="submit"
+                                                        <button class="btn-add" type="submit"
                                                                 formmethod="post">
                                                             <span class="fa fa-shopping-cart"></span> Ajouter
                                                         </button>
@@ -141,7 +141,7 @@
                                                     <form method="post" action="addToOrder">
                                                         <input type="hidden" id="productId" name="productId"
                                                                value="<%= p.getId() %>">
-                                                        <button class="badge badge-info badge-md p-2" type="submit"
+                                                        <button class="btn-add" type="submit"
                                                                 formmethod="post">
                                                             <span class="fa fa-shopping-cart"></span> Ajouter
                                                         </button>
@@ -181,7 +181,7 @@
                                                     <form method="post" action="addToOrder">
                                                         <input type="hidden" id="productId" name="productId"
                                                                value="<%= p.getId() %>">
-                                                        <button class="badge badge-info badge-md p-2" type="submit"
+                                                        <button class="btn-add" type="submit"
                                                                 formmethod="post">
                                                             <span class="fa fa-shopping-cart"></span> Ajouter
                                                         </button>
@@ -221,7 +221,7 @@
                                                     <form method="post" action="addToOrder">
                                                         <input type="hidden" id="productId" name="productId"
                                                                value="<%= p.getId() %>">
-                                                        <button class="badge badge-info badge-md p-2" type="submit"
+                                                        <button class="btn-add" type="submit"
                                                                 formmethod="post">
                                                             <span class="fa fa-shopping-cart"></span> Ajouter
                                                         </button>

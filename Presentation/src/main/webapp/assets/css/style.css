@@ -23,7 +23,9 @@ body {
     font-family: 'Rubik', sans-serif;
     line-height: 1.80857;
 }
-
+body{
+	background-color: #fd7e14;
+}
 
 a {
     color: #1f1f1f;
@@ -164,13 +166,14 @@ button:focus{
 	padding: 15px 0px;
 	position: fixed;
 	width: 100%;
-	border-radius: 0px 0px 100px 100px;
+
 	transition: height .3s ease-out, background .3s ease-out, box-shadow .3s ease-out;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
 	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
 	z-index: 100;
+	border-radius: 0% 0% 10% 10%;
 }
 
 .top-navbar .navbar-light .navbar-nav .nav-link{
@@ -380,8 +383,8 @@ button:focus{
 
 .qt-background span {
     color: #fff;
-    font-size: 28px;  
-	font-weight: 600;	
+    font-size: 28px;
+	font-weight: 600;
 }
 
 /*------------------------------------------------------------------
@@ -421,13 +424,18 @@ button:focus{
 
 .gallery-single{
 	margin-bottom: 30px;
+	border-radius:  16px;
+	border-style: solid;
 }
 
 .gallery-single {
     position: relative;
     overflow: hidden;
     -webkit-box-shadow: 0 0 10px #ccc;
-    box-shadow: 0 0 10px #ccc;
+	border-spacing: 0px;
+
+	border-style: solid;
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
 }
 
 .why-text {
@@ -436,13 +444,18 @@ button:focus{
     bottom: -100%;
     right: 0;
     height: 100%;
-    background: rgba(207, 166, 113, 0.9);
+    background: rgba(57, 49, 49, 0.6);
     padding: 12px 12px;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;
+
+	border-color:rgba(57, 49, 49, 0.6);
+
+
+
 }
 .why-text h4{
-	color: #ffffff;
+	color: #fdfdfd;
 	font-size: 16px;
 	font-weight: 500;
 	font-family: 'Rubik', sans-serif;
@@ -455,6 +468,7 @@ button:focus{
 	padding-bottom: 15px;
 	margin-top: 0px;
 	margin-bottom: 15px;
+
 }
 .why-text h5{
 	font-size: 18px;
@@ -464,9 +478,39 @@ button:focus{
 
 .gallery-single:hover .why-text{
 	bottom: 0px;
+
+	border-spacing: 0px;
 }
 
+.btn-add{
+	color: #fff;
+	background-color: #d65106;
+	font-family: 'FontAwesome',sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border-style: solid;
 
+}
+.btn-add:hover{
+	background-color: #1b1e21;
+}
+.btn-add:active{
+	background-color: #e9e8e8;
+	color:#fd7e14;
+}
+/*------------------------------------------------------------------Panier------*/
+.img-panier{
+	width: 70px;
+	height: 70px;
+	width-max: 120px;
+	height-max: 120px;
+	border-radius: 16px;
+	border-style: solid;
+	border-style: groove;
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.7);
+}
 /*------------------------------------------------------------------
     Gallery
 -------------------------------------------------------------------*/
