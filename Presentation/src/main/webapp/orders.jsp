@@ -28,14 +28,6 @@
                     <div class="row">
                         <div class="col-lg-14">
                             <div class="text-center text-marginTOP h4">
-
-
-                               <!-- <form method="get" action="summary" class="form-inline">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="N°Commande" name="searchid" aria-label="Search">
-                                    <input type="hidden" name="search" value="1">
-                                    <button class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit">Rechercher</button>
-                                </form> -->
-
                                     <form  method="get" action="summary"  class="form text-left">
                                         <label for="new">New</label>
                                         <input  type="radio" id="new" name="status" value="NEW">
