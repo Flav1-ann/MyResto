@@ -27,7 +27,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-14">
-                            <div class="text-center text-marginTOP h1">
+                            <div class="text-center text-marginTOP h4">
 
 
                                <!-- <form method="get" action="summary" class="form-inline">
@@ -36,9 +36,13 @@
                                     <button class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit">Rechercher</button>
                                 </form> -->
 
-                                    <for  method="get" action="summary"  class="form text-left">
-                                        <label for="new">NEW</label><input  type="radio" id="new" name="status" value="NEW">
-                                        <label for="cancled">CANCLED</label><input type="radio" id="cancled" name="status" value="CANCLED">
+                                    <form  method="get" action="summary"  class="form text-left">
+                                        <label for="new">New</label>
+                                        <input  type="radio" id="new" name="status" value="NEW">
+                                        <label for="send">Send</label>
+                                        <input type="radio" id="send" name="status" value="SEND">
+                                        <label for="close">Close</label>
+                                        <input type="radio" id="close" name="status" value="CLOSE">
                                         <input class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit" value="Filter">
                                     </form>
 
