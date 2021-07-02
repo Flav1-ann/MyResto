@@ -26,9 +26,14 @@
             <div class="col-lg-8 mx-auto">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="text-center text-marginTOP">
-                                <h1>Mes commandes</h1>
+                        <div class="col-lg-14">
+                            <div class="text-center text-marginTOP h1">
+
+                                <form method="get" action="summary" class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="N°Commande" name="searchid" aria-label="Search">
+                                    <input type="hidden" name="search" value="1">
+                                    <button class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit">Rechercher</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -38,29 +43,36 @@
                     <%
                         UserDto user = ((UserDto) session.getAttribute("user"));
                         int i = 1;
+                        int searchid = 0;
+                        try {
+                            searchid = Integer.parseInt(request.getParameter("searchid"));
+                            System.out.println(searchid);
+                        }catch (Exception e){}
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        List<OrderProductDto> orders = (List<OrderProductDto>) session.getAttribute("listOrders");
                         for (OrderProductDto o : (List<OrderProductDto>) session.getAttribute("listOrders")) {
                             float price = 0.0f;
 
+                        if (searchid == o.getId() || searchid ==0){
                     %>
                     <!-- list group item-->
                     <li class="list-group-item">
                         <!-- Custom content-->
                         <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                             <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2">Commande n°<%= i%>
+                                <h5 class="mt-0 font-weight-bold mb-2 p-3 mb-2 bg-secondary text-white">Commande n°<%= i%>
                                         <%
                                  if (user.getRole().equals("ADMIN"))
                                      {
                             %>
-                                    <h6 class="mt-0 font-weight-bold mb-2">Nom du client : <%= new UserService().getById(o.getIdUser()).getFirstName() +" "+new UserService().getById(o.getIdUser()).getLastName() %>
+                                    <h6 class="mt-0 font-weight-bold"><strong>Nom du client</strong> : <%= new UserService().getById(o.getIdUser()).getFirstName() +" "+new UserService().getById(o.getIdUser()).getLastName() %>
 
                                         <%
                                  }
                             %>
 
-                                    <h6 class="mt-0 font-weight-bold mb-2">Status : <%= o.getStatus()%>
-                                        <h6 class="mt-0 font-weight-bold mb-2">Date de la commande
+                                        <h6 class="mt-0 font-weight-bold mb-2"><strong>Status</strong> : <%= o.getStatus()%>
+                                            <h6 class="mt-0 font-weight-bold mb-2"><strong>Date de la commande</strong>
                                             : <%= o.getDateCreated().toLocalDate().format(formatter)%>
                                         </h6>
                                             <%
@@ -95,21 +107,21 @@
 
 
                                         <div class="d-flex align-items-center justify-content-between mt-1">
-                                            <h6 class="font-weight-bold my-2">Prix de la commande: <%= price%>€ </h6>
+                                            <h6 class="font-weight-bold my-2"><strong>Prix de la commande:</strong> <%= price%>€ </h6>
                                         </div>
                             <% }
                                  if (user.getRole().equals("ADMIN"))
                                      {%>
-                                        <form class="col-12" action="updateOrder">
-                                            <label for="status">Etat de la commande:</label>
+                                        <form class="col-14" action="updateOrder">
+                                            <label for="status">Etat de la commande :</label>
                                             <select name="drop" id="status">
                                                 <option value="" selected disabled> ---- </option>
                                                 <% for(OrderProductDto.Status e :  OrderProductDto.Status.values()){ %>
                                                     <option  value="<%= e %>,<%= o.getId()%>"><%= e %></option>
                                                 <% } %>
                                             </select>
-                                            <div class="form_input col-12 ">
-                                                <button href="updateOrder" class="btn btn-primary submit-btn" formmethod="POST" type="submit" id="button" name="button" value="">Modifier la commande</button>
+                                            <div class="form_input col-14 ">
+                                                <button href="updateOrder" class="btn btn-outline-info my-2 my-sm-0 btn-circle btn-outline-new-white" formmethod="POST" type="submit" id="button" name="button" value="">Modifier la commande</button>
                                             </div>
                                         </form>
 
@@ -121,6 +133,7 @@
                     </li>
                     <%
                             i++;
+                            }
                         }
                     %>
 
