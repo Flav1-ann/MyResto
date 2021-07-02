@@ -29,11 +29,19 @@
                         <div class="col-lg-14">
                             <div class="text-center text-marginTOP h1">
 
-                                <form method="get" action="summary" class="form-inline">
+
+                               <!-- <form method="get" action="summary" class="form-inline">
                                     <input class="form-control mr-sm-2" type="search" placeholder="N°Commande" name="searchid" aria-label="Search">
                                     <input type="hidden" name="search" value="1">
                                     <button class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit">Rechercher</button>
-                                </form>
+                                </form> -->
+
+                                    <for  method="get" action="summary"  class="form text-left">
+                                        <label for="new">NEW</label><input  type="radio" id="new" name="status" value="NEW">
+                                        <label for="cancled">CANCLED</label><input type="radio" id="cancled" name="status" value="CANCLED">
+                                        <input class="btn btn-outline-info my-2 my-sm-0   btn btn-lg btn-circle btn-outline-new-white" type="submit" value="Filter">
+                                    </form>
+
                             </div>
                         </div>
                     </div>
@@ -43,17 +51,15 @@
                     <%
                         UserDto user = ((UserDto) session.getAttribute("user"));
                         int i = 1;
-                        int searchid = 0;
+                        String status = new String("");
                         try {
-                            searchid = Integer.parseInt(request.getParameter("searchid"));
-                            System.out.println(searchid);
+                            status = request.getParameter("status");
                         }catch (Exception e){}
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                        List<OrderProductDto> orders = (List<OrderProductDto>) session.getAttribute("listOrders");
                         for (OrderProductDto o : (List<OrderProductDto>) session.getAttribute("listOrders")) {
                             float price = 0.0f;
 
-                        if (searchid == o.getId() || searchid ==0){
+                        if ((status != null && status.equals(o.getStatus())) || status == null){
                     %>
                     <!-- list group item-->
                     <li class="list-group-item">
