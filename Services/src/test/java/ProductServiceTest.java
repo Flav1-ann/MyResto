@@ -93,9 +93,9 @@ public class ProductServiceTest {
     public void ProductGetOneTest(){
 
         try{
-            var productNotMock = new ProductDto(1,"CocaService", 3.5f, "", "C'est du coca",0) ;
+            ProductDto productNotMock = new ProductDto(1,"CocaService", 3.5f, "", "C'est du coca",0) ;
             when(productDao.getOneProduct(1)).thenReturn(productService.convertProductDtoToProduct(productNotMock));
-            var productMock = productService.getOneProduct(1);
+            ProductDto productMock = productService.getOneProduct(1);
             MatcherAssert.assertThat(productMock.getName(), equalTo(productNotMock.getName()));
             verify(productDao).getOneProduct(1);
         } catch (ServiceException | DaoException e) {

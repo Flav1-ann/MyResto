@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import static org.hamcrest.Matchers.equalTo;
 
+import java.util.Set;
+
   class ProductDaoTest {
 
     private ProductDao productDao = new ProductDao();
@@ -18,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
     @Order(1)
       void ProductCreate() {
         try {
-            var result = productDao.createProduct(new Product("Coca", 3.5f, "", "C'est du coca",0));
+            int result = productDao.createProduct(new Product("Coca", 3.5f, "", "C'est du coca",0));
             MatcherAssert.assertThat(result, equalTo(1));
         } catch (DaoException e) {
             log.error(e.getMessage());
@@ -29,7 +31,7 @@ import static org.hamcrest.Matchers.equalTo;
     @Order(5)
       void ProductgetAll() {
         try {
-            var result = productDao.getAllProducts();
+            Set<Product> result = productDao.getAllProducts();
             MatcherAssert.assertThat(result.size(), equalTo(1));
         } catch (DaoException e) {
             log.error(e.getMessage());
@@ -40,7 +42,7 @@ import static org.hamcrest.Matchers.equalTo;
     @Order(2)
       void ProductDelete() {
         try {
-            var result = productDao.deleteProduct(1);
+            int result = productDao.deleteProduct(1);
             MatcherAssert.assertThat(result, equalTo(1));
         } catch (DaoException e) {
             log.error(e.getMessage());

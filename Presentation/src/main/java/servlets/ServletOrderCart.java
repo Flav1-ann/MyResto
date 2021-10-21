@@ -51,17 +51,17 @@ public class ServletOrderCart extends HttpServlet {
      * @throws IOException      the io exception
      */
     protected void orderCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        var orderProductService = new OrderProductService();
+        OrderProductService orderProductService = new OrderProductService();
         HttpSession userSession = request.getSession();
         Map<Integer, Integer> productsIds = (Map<Integer, Integer>) userSession.getAttribute("order");
         List<Integer> idList = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : productsIds.entrySet()) {
-            for (var i = 0; i < entry.getValue(); i++) {
+            for (int i = 0; i < entry.getValue(); i++) {
                 idList.add(entry.getKey());
             }
         }
-        var userDto = (UserDto) userSession.getAttribute("user");
-        var orderProductDto = new OrderProductDto(userDto.getId(), idList, new Date(System.currentTimeMillis()));
+        UserDto userDto = (UserDto) userSession.getAttribute("user");
+        OrderProductDto orderProductDto = new OrderProductDto(userDto.getId(), idList, new Date(System.currentTimeMillis()));
         try {
             orderProductService.createOrderProduct(orderProductDto);
             request.setAttribute("info", "La commande a été crée");

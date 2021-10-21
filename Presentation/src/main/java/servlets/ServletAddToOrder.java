@@ -42,7 +42,7 @@ public class ServletAddToOrder extends HttpServlet {
     protected void operations(HttpServletRequest request, HttpServletResponse response, HttpSession userSession) throws IOException {
 
         HashMap<Integer, Integer> productMap = new HashMap<>();
-        var productId = Integer.parseInt(request.getParameter("productId"));
+        int productId = Integer.parseInt(request.getParameter("productId"));
 
         if (userSession.getAttribute(ORDER_ARG) == null) {
             productMap.put(productId, 1);

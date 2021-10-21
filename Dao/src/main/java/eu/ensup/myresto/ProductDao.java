@@ -20,7 +20,7 @@ public class ProductDao extends BaseDao implements IProductDao {
     public int createProduct(Product product) throws DaoException {
         try {
             connexion();
-            var sql = "INSERT INTO `product`(name,price, description,image,id_category) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO `product`(name,price, description,image,id_category) VALUES (?,?,?,?,?)";
             setPs(getCn().prepareStatement(sql));
             getPs().setString(1, product.getName());
             getPs().setFloat(2, product.getPrice());
@@ -40,7 +40,7 @@ public class ProductDao extends BaseDao implements IProductDao {
         Set<Product> products = new HashSet<>();
         try {
             connexion();
-            var sql = "SELECT * FROM `product`";
+            String sql = "SELECT * FROM `product`";
             setPs(getCn().prepareStatement(sql));
             setRs(getPs().executeQuery());
             while (getRs().next()) {
@@ -57,7 +57,7 @@ public class ProductDao extends BaseDao implements IProductDao {
     public int updateProduct(Product product) throws DaoException {
         try {
             connexion();
-            var sql = "UPDATE `product` SET `name`= ?,`price`= ?,`description`= ?,`image`= ?,`id_category`= ? WHERE `id`= ?";
+            String sql = "UPDATE `product` SET `name`= ?,`price`= ?,`description`= ?,`image`= ?,`id_category`= ? WHERE `id`= ?";
             setPs(getCn().prepareStatement(sql));
             getPs().setString(1, product.getName());
             getPs().setFloat(2, product.getPrice());
@@ -78,7 +78,7 @@ public class ProductDao extends BaseDao implements IProductDao {
     public int deleteProduct(int idProduct) throws DaoException {
         try {
             connexion();
-            var sql = "DELETE FROM `product` WHERE id=?";
+            String sql = "DELETE FROM `product` WHERE id=?";
             setPs(getCn().prepareStatement(sql));
             getPs().setInt(1, idProduct);
             setResult(getPs().executeUpdate());
@@ -93,7 +93,7 @@ public class ProductDao extends BaseDao implements IProductDao {
     public Product getOneProduct(int idProduct) throws DaoException {
         try {
             connexion();
-            var sql = "SELECT * FROM `product` WHERE id=?";
+            String sql = "SELECT * FROM `product` WHERE id=?";
             setPs(getCn().prepareStatement(sql));
             getPs().setInt(1, idProduct);
             setRs(getPs().executeQuery());

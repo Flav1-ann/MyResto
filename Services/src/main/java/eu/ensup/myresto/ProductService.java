@@ -48,7 +48,7 @@ public class ProductService implements IProductService {
     public Set<ProductDto> getAllProducts() throws ServiceException {
         try {
             Set<ProductDto> productDtoSet = new HashSet<>();
-            for (var product : productDao.getAllProducts()) {
+            for (Product product : productDao.getAllProducts()) {
                 productDtoSet.add(convertProductToProductDto(product));
             }
             return productDtoSet;

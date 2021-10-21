@@ -101,9 +101,9 @@ public class OrderProductServiceTest {
     @Test
     public void getOneOrderProduct() {
         try {
-            var orderNotMock = new OrderProduct(1, 100, null, null, OrderProduct.Status.NEW.toString());
+            OrderProduct orderNotMock = new OrderProduct(1, 100, null, null, OrderProduct.Status.NEW.toString());
             when(OrderproductDao.getOneOrderProduct(1)).thenReturn(orderNotMock);
-            var orderMock = OrderproductService.getOneOrderProduct(1);
+            OrderProductDto orderMock = OrderproductService.getOneOrderProduct(1);
             MatcherAssert.assertThat(orderNotMock.getId(), equalTo(orderMock.getId()));
             verify(OrderproductDao).getOneOrderProduct(1);
         } catch (ServiceException | DaoException e) {

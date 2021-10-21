@@ -42,7 +42,7 @@ public class ServletMenu extends HttpServlet {
      */
     protected void operations(HttpServletRequest request, HttpServletResponse response, HttpSession userSession) throws ServletException, IOException {
 
-        var productService = new ProductService();
+        ProductService productService = new ProductService();
         try {
             List<ProductDto> listBoisson = new LinkedList<>();
             List<ProductDto> listEntree = new LinkedList<>();
@@ -50,7 +50,7 @@ public class ServletMenu extends HttpServlet {
             List<ProductDto> listDessert = new LinkedList<>();
             List<ProductDto> products = new ArrayList<>(productService.getAllProducts());
             products.sort(Comparator.comparing(ProductDto::getName));
-            for (var produc : products) {
+            for (ProductDto produc : products) {
                 switch (new CategoryService().getById(produc.getIdCategory()).getName()) {
                     case ("boisson"):
                         listBoisson.add(produc);

@@ -2,7 +2,6 @@ package eu.ensup.myresto;
 
 import eu.ensup.myresto.exceptions.DaoException;
 import eu.ensup.myresto.exceptions.ServiceException;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,7 +41,7 @@ public class OrderProductService implements IOrderProductService {
     public Set<OrderProductDto> getAllOrderProductsForOneUser(int idUser) throws ServiceException {
         try {
             Set<OrderProductDto> productDtoSet = new HashSet<>();
-            for (var product : orderProduct.getAllOrderProductsForOneUser(idUser)) {
+            for (OrderProduct product : orderProduct.getAllOrderProductsForOneUser(idUser)) {
                 productDtoSet.add(convertOrderProductToOrderProductDto(product));
             }
             return productDtoSet;
@@ -54,7 +53,7 @@ public class OrderProductService implements IOrderProductService {
     public Set<OrderProductDto> getAllOrderProduct() throws ServiceException {
         try {
             Set<OrderProductDto> productDtoSet = new HashSet<>();
-            for (var product : orderProduct.getAllOrderProduct()) {
+            for (OrderProduct product : orderProduct.getAllOrderProduct()) {
                 productDtoSet.add(convertOrderProductToOrderProductDto(product));
             }
             return productDtoSet;

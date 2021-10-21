@@ -40,7 +40,7 @@ public class UserService implements IUserService {
     @Override
     public int create(RegisterUserDto userDto) throws ServiceException {
         try {
-            var user = UserMapper.convertDtoDomaine(userDto);
+            User user = UserMapper.convertDtoDomaine(userDto);
             byte[] salt = createSalt();
             user.setPassword(generateHashPassword(userDto.getPassword(), salt));
             user.setSalt(Base64.getEncoder().encodeToString(salt));
@@ -94,7 +94,7 @@ public class UserService implements IUserService {
     @Override
     public UserDto validateUser(LoginUserDto loginUserDto) throws ServiceException {
         try {
-            var user = userDao.getByLogin(loginUserDto.getLogin());
+            User user = userDao.getByLogin(loginUserDto.getLogin());
             byte[] salt = Base64.getDecoder().decode(user.getSalt());
             String hash = generateHashPassword(loginUserDto.getPassword(), salt);
             if (hash.equals(user.getPassword()))
@@ -124,8 +124,8 @@ public class UserService implements IUserService {
 
     @Override
     public byte[] createSalt() {
-        var bytes = new byte[20];
-        var random = new SecureRandom();
+        byte[] bytes = new byte[20];
+        SecureRandom random = new SecureRandom();
         random.nextBytes(bytes);
         return bytes;
     }

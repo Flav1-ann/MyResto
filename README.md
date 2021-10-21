@@ -20,7 +20,7 @@ CLiquer sur [MyResto - Accueil](http://vps-0c0ccce5.vps.ovh.net:8081/MyResto/)
 <hr>
 
 ## Pré-requis
-Java : version `11.0.0` <br>
+Java : version `8.0.0` <br>
 Maven : version `3.6.3` <br>
 Système de gestion de Base de donnée: `MySQL` <br>
 Container web Tomcat : version `9.0`

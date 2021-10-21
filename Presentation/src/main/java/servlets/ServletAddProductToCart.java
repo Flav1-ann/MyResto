@@ -39,7 +39,7 @@ public class ServletAddProductToCart extends HttpServlet {
     protected void addProductToCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession userSession = request.getSession();
         Map<Integer, Integer> productsOrder = (Map<Integer, Integer>) userSession.getAttribute("order");
-        var productId = Integer.parseInt(request.getParameter("id"));
+        int productId = Integer.parseInt(request.getParameter("id"));
         productsOrder.put(productId, productsOrder.get(productId) + 1);
         response.sendRedirect(request.getContextPath() + "/cart");
     }

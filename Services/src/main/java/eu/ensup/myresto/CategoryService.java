@@ -38,7 +38,7 @@ public class CategoryService implements ICategoryService {
         try {
             List<CategoryDto> listCategory = new ArrayList<>();
 
-            for (var category : dao.getAll()) {
+            for (Category category : dao.getAll()) {
                 listCategory.add(CategoryMapper.convertDomaineDto(category));
             }
             return listCategory;

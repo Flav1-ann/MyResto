@@ -31,7 +31,7 @@ public class BaseDao {
      * Instantiates a new Base dao.
      */
     public BaseDao() {
-        var bundle = ResourceBundle.getBundle("db");
+        ResourceBundle bundle = ResourceBundle.getBundle("db");
         this.url = bundle.getString("db.url");
         this.login = bundle.getString("db.username");
         this.password = bundle.getString("db.password");

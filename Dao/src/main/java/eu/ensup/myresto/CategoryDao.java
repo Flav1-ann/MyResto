@@ -29,7 +29,7 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
 
             ResultSet res = getRs();
             while (res.next()) {
-                var category = new Category(res.getInt("id"), res.getString("name"), res.getString(IMAGE));
+                Category category = new Category(res.getInt("id"), res.getString("name"), res.getString(IMAGE));
                 allCategory.add(category);
             }
 
@@ -76,7 +76,7 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
         try {
             setRs(getPs().executeQuery());
             ResultSet res = getRs();
-            var logInfo = "La categorie  n'est pas disponible dans la base de donnée.";
+            String logInfo = "La categorie  n'est pas disponible dans la base de donnée.";
             if (!res.next()) {
                 log.info(logInfo);
             } else {
@@ -95,7 +95,7 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
     public int create(Category category) throws DaoException {
         try {
             //Vérifie qu'il n'y a pas de double
-            var logInfo = String.format("La categorie %s existe déjà", category.getName());
+            String logInfo = String.format("La categorie %s existe déjà", category.getName());
             if (getByName(category.getName()) == null) {
                 connexion();
 
@@ -122,11 +122,11 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
         try {
             connexion();
 
-            var preCategory = getById(category.getId());
+            Category preCategory = getById(category.getId());
 
             boolean haveUpdate = category.getName() != null && !category.getName().equals(preCategory.getName());
             haveUpdate = haveUpdate || category.getImage() != null && category.getImage().equals(preCategory.getImage());
-            var logInfo = String.format("Cette categorie n'as pas été modifier %s", category.getName());
+            String logInfo = String.format("Cette categorie n'as pas été modifier %s", category.getName());
             //Vérifie qu'il y a eu des modification
             if (haveUpdate) {
                 setPs(getCn().prepareStatement("UPDATE category SET name = ?, image = ? WHERE id = ?"));
@@ -158,7 +158,7 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
     @Override
     public int delete(int idCategory) throws DaoException {
         try {
-            var logInfo = String.format("La categorie %d n'existe pas !", idCategory);
+            String logInfo = String.format("La categorie %d n'existe pas !", idCategory);
             if (idCategory != -1 && getById(idCategory) != null) {
                 connexion();
 

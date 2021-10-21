@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -44,10 +46,10 @@ public class ServletOrders extends HttpServlet {
      * @throws IOException      the io exception
      */
     protected void operations(HttpServletRequest request, HttpServletResponse response, HttpSession userSession) throws ServletException, IOException {
-        var orderProductService = new OrderProductService();
+        OrderProductService orderProductService = new OrderProductService();
         try {
             if (request.getSession().getAttribute("user") != null) {
-                var orders = orderProductService.getAllOrderProductsForOneUser(((UserDto) request.getSession().getAttribute("user")).getId()).stream().collect(Collectors.toList());
+                List<OrderProductDto> orders = orderProductService.getAllOrderProductsForOneUser(((UserDto) request.getSession().getAttribute("user")).getId()).stream().collect(Collectors.toList());
                 Collections.sort(orders, Comparator.comparing(OrderProductDto::getId));
                 userSession.setAttribute("listOrders", orders);
                 this.getServletContext().getRequestDispatcher("/orders.jsp").forward(request, response);

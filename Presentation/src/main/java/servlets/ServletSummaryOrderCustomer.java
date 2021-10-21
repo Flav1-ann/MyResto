@@ -3,6 +3,7 @@ package servlets;
 import eu.ensup.myresto.OrderProductDto;
 import eu.ensup.myresto.OrderProductService;
 import eu.ensup.myresto.UserDto;
+import eu.ensup.myresto.OrderProductDto.Status;
 import eu.ensup.myresto.exceptions.ServiceException;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -43,11 +45,11 @@ public class ServletSummaryOrderCustomer extends HttpServlet {
      * @throws IOException      the io exception
      */
     protected void operations(HttpServletRequest request, HttpServletResponse response, HttpSession userSession) throws ServletException, IOException {
-        var orderProductService = new OrderProductService();
+        OrderProductService orderProductService = new OrderProductService();
         try {
             UserDto user = ((UserDto) request.getSession().getAttribute("user"));
             if (user != null && user.getRole().equals("ADMIN")) {
-                var orders = orderProductService.getAllOrderProduct().stream().collect(Collectors.toList());
+                List<OrderProductDto> orders = orderProductService.getAllOrderProduct().stream().collect(Collectors.toList());
                 Collections.sort(orders, Comparator.comparing(OrderProductDto::getId));
                 userSession.setAttribute("listOrders", orders);
                 this.getServletContext().getRequestDispatcher("/orders.jsp").forward(request, response);
@@ -58,6 +60,6 @@ public class ServletSummaryOrderCustomer extends HttpServlet {
             userSession.setAttribute("error", e.getMessageViewForUser());
             this.getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
         }
-            var f= OrderProductDto.Status.values();
+            Status[] f= OrderProductDto.Status.values();
     }
 }

@@ -46,16 +46,16 @@ public class ServletCart extends HttpServlet {
      * @throws IOException      the io exception
      */
     protected void operations(HttpServletRequest request, HttpServletResponse response, HttpSession userSession) throws ServletException, IOException {
-        var productService = new ProductService();
+        ProductService productService = new ProductService();
         Map<Integer, Integer> productsIds = (Map<Integer, Integer>) userSession.getAttribute("order");
-        var total = 0.0f;
+        Float total = 0.0f;
         Set<ProductDto> productDtos = new HashSet<>();
         request.setAttribute("totalPrice", total);
         userSession.setAttribute("productSet", productDtos);
         if (productsIds != null)
             for (Map.Entry<Integer, Integer> entry : productsIds.entrySet()) {
                 try {
-                    var productDto = productService.getOneProduct(entry.getKey());
+                    ProductDto productDto = productService.getOneProduct(entry.getKey());
                     total += productDto.getPrice() * entry.getValue();
                     productDtos.add(productDto);
                 } catch (ServiceException e) {

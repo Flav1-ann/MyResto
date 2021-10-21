@@ -48,8 +48,8 @@ public class ServletLogin extends HttpServlet {
      */
     protected void operations(HttpServletRequest request, HttpServletResponse response,HttpSession userSession) throws ServletException, IOException {
         if (request.getParameter("login") != null) {
-            var loginUserDto = new LoginUserDto(request.getParameter("login"), request.getParameter("password"));
-            var userService = new UserService();
+            LoginUserDto loginUserDto = new LoginUserDto(request.getParameter("login"), request.getParameter("password"));
+            UserService userService = new UserService();
             try {
                 userSession.removeAttribute("user");
                 UserDto user = userService.validateUser(loginUserDto);

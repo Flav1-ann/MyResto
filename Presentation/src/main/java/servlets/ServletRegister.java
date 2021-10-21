@@ -45,9 +45,9 @@ public class ServletRegister extends HttpServlet {
      * @throws IOException      the io exception
      */
     public void operations(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        var userService = new UserService();
+        UserService userService = new UserService();
         if (request.getParameter("login") != null) {
-            var user = new RegisterUserDto(0, request.getParameter("login"), request.getParameter("firstname"), request.getParameter("lastname"), request.getParameter("address"), null, null, "Client", null);
+            RegisterUserDto user = new RegisterUserDto(0, request.getParameter("login"), request.getParameter("firstname"), request.getParameter("lastname"), request.getParameter("address"), null, null, "Client", null);
             String password1 = request.getParameter("password[1]");
             String password2 = request.getParameter("password[2]");
             if (password1.equals(password2)) {

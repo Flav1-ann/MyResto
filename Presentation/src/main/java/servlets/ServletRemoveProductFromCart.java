@@ -36,7 +36,7 @@ public class ServletRemoveProductFromCart extends HttpServlet {
      */
     protected void removeProductFromCart(HttpServletRequest request, HttpServletResponse response ,HttpSession userSession) throws IOException {
         Map<Integer, Integer> productsOrder = (Map<Integer, Integer>) userSession.getAttribute("order");
-        var productId = Integer.parseInt(request.getParameter("id"));
+        int productId = Integer.parseInt(request.getParameter("id"));
         if (productsOrder.get(productId) > 1) {
             productsOrder.put(productId, productsOrder.get(productId) - 1);
         } else {
