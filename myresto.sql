@@ -32,7 +32,7 @@ CREATE TABLE `category` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `image` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `category`
@@ -53,7 +53,7 @@ INSERT INTO `category` (`id`, `name`, `image`) VALUES
 CREATE TABLE `listproducts` (
   `id_product` int NOT NULL,
   `id_order` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `listproducts`
@@ -90,7 +90,7 @@ CREATE TABLE `order_product` (
   `id_user` int NOT NULL,
   `date` date DEFAULT NULL,
   `status` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `order_product`
@@ -117,7 +117,7 @@ CREATE TABLE `product` (
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `id_category` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `product`
@@ -153,7 +153,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `salt` varchar(255) DEFAULT NULL,
   `image` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
