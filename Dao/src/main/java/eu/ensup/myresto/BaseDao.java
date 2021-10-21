@@ -25,7 +25,7 @@ public class BaseDao {
 
     private static int result;
     private static final Logger log = LogManager.getLogger(BaseDao.class);
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     /**
      * Instantiates a new Base dao.
