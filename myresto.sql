@@ -28,6 +28,9 @@ SET time_zone = "+00:00";
 -- Structure de la table `category`
 --
 
+CREATE DATABASE IF NOT EXISTS myresto;
+USE myresto;
+
 CREATE TABLE `category` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
