@@ -49,6 +49,12 @@ public class CategoryDao extends BaseDao implements ICategoryDao {
 
     @Override
     public int update(Category category) throws DaoException {
+        EntityManager em = initTransaction();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.merge(category);
+        tr.commit();
+        closeTransaction();
         return 0;
     }
 
