@@ -10,7 +10,7 @@ public class BaseDao {
     protected EntityManagerFactory emf;
 
     protected EntityManager initTransaction() {
-        emf = Persistence.createEntityManagerFactory("video-reco-jpa");
+        emf = Persistence.createEntityManagerFactory("myresto");
         return emf.createEntityManager();
     }
 

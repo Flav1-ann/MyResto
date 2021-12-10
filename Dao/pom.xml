@@ -12,12 +12,6 @@
     <artifactId>Dao</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>eu.ensup</groupId>
             <artifactId>Domaine</artifactId>
             <version>1.0-SNAPSHOT</version>
