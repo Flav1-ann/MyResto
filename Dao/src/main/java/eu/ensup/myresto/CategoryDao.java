@@ -9,10 +9,13 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 /**
  * The type Category dao.
  */
-public class CategoryDao implements ICategoryDao {
+public class CategoryDao extends BaseDao implements ICategoryDao {
     private static final Logger log = LogManager.getLogger(CategoryDao.class);
 
     private static final String IMAGE = "image";
@@ -35,6 +38,12 @@ public class CategoryDao implements ICategoryDao {
 
     @Override
     public int create(Category category) throws DaoException {
+        EntityManager em = initTransaction();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(category);
+        tr.commit();
+        closeTransaction();
         return 0;
     }
 

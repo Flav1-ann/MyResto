@@ -2,6 +2,8 @@ package eu.ensup.myresto;
 
 import eu.ensup.myresto.exceptions.DaoException;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -13,6 +15,12 @@ public class OrderProductDao extends BaseDao implements IOrderProductDao {
 
     @Override
     public int createOrderProduct(OrderProduct orderProduct) throws DaoException {
+        EntityManager em = initTransaction();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(orderProduct);
+        tr.commit();
+        closeTransaction();
         return 0;
     }
 

@@ -9,6 +9,9 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 /**
  * The type Product dao.
  */
@@ -19,6 +22,12 @@ public class ProductDao extends BaseDao implements IProductDao {
 
     @Override
     public int createProduct(Product product) throws DaoException {
+        EntityManager em = initTransaction();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        em.persist(product);
+        tr.commit();
+        closeTransaction();
         return 0;
     }
 
