@@ -1,9 +1,21 @@
 package eu.ensup.myresto;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * The type Product.
  */
+@Entity
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
     private String name;
     private float price;
@@ -45,6 +57,10 @@ public class Product {
         this.picture = picture;
         this.description = description;
         this.idCategory = idCategory;
+    }
+
+    public Product() {
+
     }
 
     /**

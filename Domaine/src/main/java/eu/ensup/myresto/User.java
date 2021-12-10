@@ -1,10 +1,21 @@
 package eu.ensup.myresto;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * The type User.
  */
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
     private String login;
@@ -67,6 +78,10 @@ public class User {
         this.address = address;
         this.role = role;
         this.image = image;
+    }
+
+    public User() {
+
     }
 
     /**
