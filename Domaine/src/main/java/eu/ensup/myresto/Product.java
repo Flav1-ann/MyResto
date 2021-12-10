@@ -2,10 +2,7 @@ package eu.ensup.myresto;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * The type Product.
@@ -21,42 +18,26 @@ public class Product {
     private float price;
     private String picture;
     private String description;
-    private int idCategory;
 
-    /**
-     * Instantiates a new Product.
-     *
-     * @param id          the id
-     * @param name        the name
-     * @param price       the price
-     * @param picture     the picture
-     * @param description the description
-     * @param idCategory  the id category
-     */
-    public Product(int id, String name, float price, String picture, String description, int idCategory) {
+    @ManyToOne
+    private Category category;
+
+    public Product(int id, String name, float price, String picture, String description, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.picture = picture;
         this.description = description;
-        this.idCategory = idCategory;
+        this.category = category;
     }
 
-    /**
-     * Instantiates a new Product.
-     *
-     * @param name        the name
-     * @param price       the price
-     * @param picture     the picture
-     * @param description the description
-     * @param idCategory  the id category
-     */
-    public Product(String name, float price, String picture, String description, int idCategory) {
+
+    public Product(String name, float price, String picture, String description, Category category) {
         this.name = name;
         this.price = price;
         this.picture = picture;
         this.description = description;
-        this.idCategory = idCategory;
+        this.category = category;
     }
 
     public Product() {
@@ -153,22 +134,14 @@ public class Product {
         this.description = description;
     }
 
-    /**
-     * Gets id category.
-     *
-     * @return the id category
-     */
-    public int getIdCategory() {
-        return idCategory;
+
+    public Category getIdCategory() {
+        return category;
     }
 
-    /**
-     * Sets id category.
-     *
-     * @param idCategory the id category
-     */
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+
+    public void setIdCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -179,7 +152,7 @@ public class Product {
                 ", price=" + price +
                 ", picture='" + picture + '\'' +
                 ", description='" + description + '\'' +
-                ", idCategory=" + idCategory +
+                ", category=" + category +
                 '}';
     }
 }

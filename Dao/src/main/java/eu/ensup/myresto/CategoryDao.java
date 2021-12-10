@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * The type Category dao.
  */
-public class CategoryDao extends BaseDao implements ICategoryDao {
+public class CategoryDao implements ICategoryDao {
     private static final Logger log = LogManager.getLogger(CategoryDao.class);
 
     private static final String IMAGE = "image";

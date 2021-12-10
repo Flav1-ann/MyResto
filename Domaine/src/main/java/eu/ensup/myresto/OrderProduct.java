@@ -2,10 +2,7 @@ package eu.ensup.myresto;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -19,8 +16,14 @@ public class OrderProduct {
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     private Integer id;
+
+    @ManyToOne
     private User idUser;
-    private List<Product> idProduct;
+
+    @OneToMany(mappedBy = "orderProduct", fetch = FetchType.LAZY)
+    private List<Product> products;
+
+
     private String status;
     private Date dateCreated;
 
@@ -45,11 +48,11 @@ public class OrderProduct {
     }
 
     public List<Product> getIdProduct() {
-        return idProduct;
+        return products;
     }
 
-    public void setIdProduct(List<Product> idProduct) {
-        this.idProduct = idProduct;
+    public void setIdProduct(List<Product> products) {
+        this.products = products;
     }
 
     public String getStatus() {
@@ -92,7 +95,7 @@ public class OrderProduct {
         return "eu.ensup.myresto.OrderProduct{" +
                 "id=" + id +
                 ", idUser=" + idUser +
-                ", idProduct=" + idProduct +
+                ", idProduct=" + products +
                 ", status='" + status + '\'' +
                 ", dateCreated=" + dateCreated +
                 '}';

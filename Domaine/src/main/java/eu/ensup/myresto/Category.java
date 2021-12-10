@@ -2,10 +2,9 @@ package eu.ensup.myresto;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Category.
@@ -19,6 +18,9 @@ public class Category {
     private Integer id;
     private String name;
     private String image;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Product> productList = new ArrayList<>();
 
     /**
      * Instantiates a new Category.

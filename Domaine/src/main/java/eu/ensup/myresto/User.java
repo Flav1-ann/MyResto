@@ -2,10 +2,9 @@ package eu.ensup.myresto;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type User.
@@ -34,19 +33,10 @@ public class User {
 
     private String image;
 
-    /**
-     * Instantiates a new User.
-     *
-     * @param id        the id
-     * @param login     the login
-     * @param firstName the first name
-     * @param lastName  the last name
-     * @param address   the address
-     * @param role      the role
-     * @param password  the password
-     * @param salt      the salt
-     * @param image     the image
-     */
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<OrderProduct> orderList = new ArrayList<>();
+
+
     public User(int id,String login, String firstName, String lastName, String address, String role, String password, String salt, String image) {
         this.id = id;
         this.login = login;
@@ -59,17 +49,6 @@ public class User {
         this.image = image;
     }
 
-    /**
-     * Instantiates a new User.
-     *
-     * @param id        the id
-     * @param login     the login
-     * @param firstName the first name
-     * @param lastName  the last name
-     * @param address   the address
-     * @param role      the role
-     * @param image     the image
-     */
     public User(int id,String login, String firstName, String lastName, String address, String role, String image) {
         this.id = id;
         this.login = login;
